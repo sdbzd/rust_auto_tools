@@ -1,0 +1,620 @@
+{
+    "response_data": {
+        "data": [
+            {
+                "path": "/configs",
+                "children": [
+                    {
+                        "component": "cms/contentcore/site",
+                        "name": "Site",
+                        "hidden": false,
+                        "path": "site",
+                        "meta": {
+                            "title": "\u7ad9\u70b9\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "cascader"
+                        }
+                    },
+                    {
+                        "component": "cms/contentcore/catalog",
+                        "name": "Catalog",
+                        "hidden": false,
+                        "path": "catalog",
+                        "meta": {
+                            "title": "\u680f\u76ee\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "tree-table"
+                        }
+                    },
+                    {
+                        "component": "cms/contentcore/content",
+                        "name": "Content",
+                        "hidden": false,
+                        "path": "content",
+                        "meta": {
+                            "title": "\u5185\u5bb9\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "list"
+                        }
+                    },
+                    {
+                        "component": "cms/contentcore/resource",
+                        "name": "Resource",
+                        "hidden": false,
+                        "path": "resource",
+                        "meta": {
+                            "title": "\u8d44\u6e90\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "list"
+                        }
+                    },
+                    {
+                        "component": "cms/contentcore/publishPipe",
+                        "name": "Publishpipe",
+                        "hidden": false,
+                        "path": "publishpipe",
+                        "meta": {
+                            "title": "\u53d1\u5e03\u901a\u9053",
+                            "noCache": true,
+                            "icon": "component"
+                        }
+                    },
+                    {
+                        "component": "cms/contentcore/template",
+                        "name": "Template",
+                        "hidden": false,
+                        "path": "template",
+                        "meta": {
+                            "title": "\u6a21\u677f\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "code"
+                        }
+                    },
+                    {
+                        "component": "cms/contentcore/file",
+                        "name": "File",
+                        "hidden": false,
+                        "path": "file",
+                        "meta": {
+                            "title": "\u6587\u4ef6\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "tree-table"
+                        }
+                    },
+                    {
+                        "component": "cms/staticize/index",
+                        "name": "Staticize",
+                        "hidden": false,
+                        "path": "staticize",
+                        "meta": {
+                            "title": "\u6a21\u677f\u6307\u4ee4",
+                            "noCache": true,
+                            "icon": "code"
+                        }
+                    },
+                    {
+                        "component": "cms/exmodel/model",
+                        "name": "Exmodel",
+                        "hidden": false,
+                        "path": "exmodel",
+                        "meta": {
+                            "title": "\u6269\u5c55\u6a21\u578b",
+                            "noCache": true,
+                            "icon": "form"
+                        }
+                    },
+                    {
+                        "component": "word/word",
+                        "name": "Word",
+                        "hidden": false,
+                        "path": "word",
+                        "meta": {
+                            "title": "\u8bcd\u6c47\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "input"
+                        }
+                    },
+                    {
+                        "component": "cms/search/indexList",
+                        "name": "Search/index",
+                        "hidden": false,
+                        "path": "search/index",
+                        "meta": {
+                            "title": "\u5185\u5bb9\u7d22\u5f15",
+                            "noCache": true,
+                            "icon": "documentation"
+                        }
+                    },
+                    {
+                        "component": "search/dictWord",
+                        "name": "DictWord",
+                        "hidden": false,
+                        "path": "dictWord",
+                        "meta": {
+                            "title": "\u7d22\u5f15\u8bcd\u5e93",
+                            "noCache": true,
+                            "icon": "input"
+                        }
+                    },
+                    {
+                        "component": "search/searchLog",
+                        "name": "SearchLog",
+                        "hidden": false,
+                        "path": "searchLog",
+                        "meta": {
+                            "title": "\u641c\u7d22\u65e5\u5fd7",
+                            "noCache": true,
+                            "icon": "log"
+                        }
+                    }
+                ],
+                "name": "Configs",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": false,
+                "meta": {
+                    "title": "\u5185\u5bb9\u7ba1\u7406",
+                    "noCache": true,
+                    "icon": "documentation"
+                },
+                "redirect": "noRedirect"
+            },
+            {
+                "path": "/operations",
+                "children": [
+                    {
+                        "component": "cms/link/linkGroup",
+                        "name": "Link",
+                        "hidden": false,
+                        "path": "link",
+                        "meta": {
+                            "title": "\u53cb\u94fe\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "link"
+                        }
+                    },
+                    {
+                        "component": "cms/ad/adSpace",
+                        "name": "Advertisement",
+                        "hidden": false,
+                        "path": "advertisement",
+                        "meta": {
+                            "title": "\u5e7f\u544a\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "button"
+                        }
+                    },
+                    {
+                        "component": "comment/commentList",
+                        "name": "Comment",
+                        "hidden": false,
+                        "path": "comment",
+                        "meta": {
+                            "title": "\u8bc4\u8bba\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "chat"
+                        }
+                    },
+                    {
+                        "component": "vote/index",
+                        "name": "Vote",
+                        "hidden": false,
+                        "path": "vote",
+                        "meta": {
+                            "title": "\u8c03\u67e5\u95ee\u5377",
+                            "noCache": true,
+                            "icon": "radio"
+                        }
+                    },
+                    {
+                        "component": "cms/customform/index",
+                        "name": "Customform",
+                        "hidden": false,
+                        "path": "customform",
+                        "meta": {
+                            "title": "\u81ea\u5b9a\u4e49\u8868\u5355",
+                            "noCache": true,
+                            "icon": "form"
+                        }
+                    },
+                    {
+                        "component": "vote/subjectList",
+                        "name": "Vote/subjects",
+                        "hidden": true,
+                        "path": "vote/subjects",
+                        "meta": {
+                            "title": "\u8c03\u67e5\u6295\u7968\u4e3b\u9898\u9875",
+                            "noCache": true,
+                            "icon": "build"
+                        }
+                    }
+                ],
+                "name": "Operations",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": false,
+                "meta": {
+                    "title": "\u4e92\u52a8\u8fd0\u8425",
+                    "noCache": true,
+                    "icon": "example"
+                },
+                "redirect": "noRedirect"
+            },
+            {
+                "path": "/member",
+                "children": [
+                    {
+                        "component": "member/memberList",
+                        "name": "List",
+                        "hidden": false,
+                        "path": "list",
+                        "meta": {
+                            "title": "\u4f1a\u5458\u5217\u8868",
+                            "noCache": true,
+                            "icon": "peoples"
+                        }
+                    },
+                    {
+                        "component": "member/levelConfig",
+                        "name": "LevelConfig",
+                        "hidden": false,
+                        "path": "levelConfig",
+                        "meta": {
+                            "title": "\u7b49\u7ea7\u914d\u7f6e",
+                            "noCache": true,
+                            "icon": "guide"
+                        }
+                    },
+                    {
+                        "component": "member/expConfig",
+                        "name": "ExpConfig",
+                        "hidden": false,
+                        "path": "expConfig",
+                        "meta": {
+                            "title": "\u7ecf\u9a8c\u914d\u7f6e",
+                            "noCache": true,
+                            "icon": "button"
+                        }
+                    }
+                ],
+                "name": "Member",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": false,
+                "meta": {
+                    "title": "\u4f1a\u5458\u7ba1\u7406",
+                    "noCache": true,
+                    "icon": "peoples"
+                },
+                "redirect": "noRedirect"
+            },
+            {
+                "component": "Layout",
+                "hidden": false,
+                "path": "/",
+                "children": [
+                    {
+                        "component": "stat/index",
+                        "name": "Statistics",
+                        "hidden": false,
+                        "path": "statistics",
+                        "meta": {
+                            "title": "\u7edf\u8ba1\u5206\u6790",
+                            "noCache": true,
+                            "icon": "chart"
+                        }
+                    }
+                ]
+            },
+            {
+                "path": "/system",
+                "children": [
+                    {
+                        "component": "system/user/index",
+                        "name": "User",
+                        "hidden": false,
+                        "path": "user",
+                        "meta": {
+                            "title": "\u7528\u6237\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "user"
+                        }
+                    },
+                    {
+                        "component": "system/role/index",
+                        "name": "Role",
+                        "hidden": false,
+                        "path": "role",
+                        "meta": {
+                            "title": "\u89d2\u8272\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "peoples"
+                        }
+                    },
+                    {
+                        "component": "system/menu/index",
+                        "name": "Menu",
+                        "hidden": false,
+                        "path": "menu",
+                        "meta": {
+                            "title": "\u83dc\u5355\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "tree-table"
+                        }
+                    },
+                    {
+                        "component": "system/dept/index",
+                        "name": "Dept",
+                        "hidden": false,
+                        "path": "dept",
+                        "meta": {
+                            "title": "\u90e8\u95e8\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "tree"
+                        }
+                    },
+                    {
+                        "component": "system/post/index",
+                        "name": "Post",
+                        "hidden": false,
+                        "path": "post",
+                        "meta": {
+                            "title": "\u5c97\u4f4d\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "post"
+                        }
+                    },
+                    {
+                        "component": "system/dict/index",
+                        "name": "Dict",
+                        "hidden": false,
+                        "path": "dict",
+                        "meta": {
+                            "title": "\u5b57\u5178\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "dict"
+                        }
+                    },
+                    {
+                        "component": "system/notice/index",
+                        "name": "Notice",
+                        "hidden": false,
+                        "path": "notice",
+                        "meta": {
+                            "title": "\u901a\u77e5\u516c\u544a",
+                            "noCache": true,
+                            "icon": "message"
+                        }
+                    },
+                    {
+                        "component": "system/i18n/index",
+                        "name": "I18n/dict",
+                        "hidden": false,
+                        "path": "i18n/dict",
+                        "meta": {
+                            "title": "\u56fd\u9645\u5316\u7ba1\u7406",
+                            "noCache": true,
+                            "icon": "language"
+                        }
+                    },
+                    {
+                        "component": "system/security/index",
+                        "name": "Security/config",
+                        "hidden": false,
+                        "path": "security/config",
+                        "meta": {
+                            "title": "\u5b89\u5168\u914d\u7f6e",
+                            "noCache": true,
+                            "icon": "shield-user-line"
+                        }
+                    }
+                ],
+                "name": "System",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": false,
+                "meta": {
+                    "title": "\u7cfb\u7edf\u7ba1\u7406",
+                    "noCache": true,
+                    "icon": "system"
+                },
+                "redirect": "noRedirect"
+            },
+            {
+                "path": "/monitor",
+                "children": [
+                    {
+                        "component": "monitor/online/index",
+                        "name": "Online",
+                        "hidden": false,
+                        "path": "online",
+                        "meta": {
+                            "title": "\u5728\u7ebf\u7528\u6237",
+                            "noCache": true,
+                            "icon": "online"
+                        }
+                    },
+                    {
+                        "component": "Layout",
+                        "name": "Http://localhost:18080/xxl-job-admin/",
+                        "hidden": false,
+                        "path": "http://localhost:18080/xxl-job-admin/",
+                        "meta": {
+                            "link": "http://localhost:18080/xxl-job-admin/",
+                            "title": "\u4efb\u52a1\u8c03\u5ea6",
+                            "noCache": true,
+                            "icon": "job"
+                        }
+                    },
+                    {
+                        "component": "monitor/task/index",
+                        "name": "Task",
+                        "hidden": false,
+                        "path": "task",
+                        "meta": {
+                            "title": "\u5b9a\u65f6\u4efb\u52a1",
+                            "noCache": true,
+                            "icon": "job"
+                        }
+                    },
+                    {
+                        "component": "monitor/async/index",
+                        "name": "Async",
+                        "hidden": false,
+                        "path": "async",
+                        "meta": {
+                            "title": "\u5f02\u6b65\u4efb\u52a1",
+                            "noCache": true,
+                            "icon": "list"
+                        }
+                    },
+                    {
+                        "component": "monitor/server/index",
+                        "name": "Server",
+                        "hidden": false,
+                        "path": "server",
+                        "meta": {
+                            "title": "\u670d\u52a1\u76d1\u63a7",
+                            "noCache": true,
+                            "icon": "server"
+                        }
+                    },
+                    {
+                        "component": "monitor/cache/index",
+                        "name": "Cache",
+                        "hidden": false,
+                        "path": "cache",
+                        "meta": {
+                            "title": "\u7f13\u5b58\u76d1\u63a7",
+                            "noCache": true,
+                            "icon": "redis"
+                        }
+                    },
+                    {
+                        "component": "monitor/cache/list",
+                        "name": "CacheList",
+                        "hidden": false,
+                        "path": "cacheList",
+                        "meta": {
+                            "title": "\u7f13\u5b58\u5217\u8868",
+                            "noCache": true,
+                            "icon": "redis-list"
+                        }
+                    },
+                    {
+                        "component": "monitor/logs/index",
+                        "name": "Logs",
+                        "hidden": false,
+                        "path": "logs",
+                        "meta": {
+                            "title": "\u7cfb\u7edf\u65e5\u5fd7",
+                            "noCache": true,
+                            "icon": "list"
+                        }
+                    }
+                ],
+                "name": "Monitor",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": false,
+                "meta": {
+                    "title": "\u7cfb\u7edf\u76d1\u63a7",
+                    "noCache": true,
+                    "icon": "monitor"
+                },
+                "redirect": "noRedirect"
+            },
+            {
+                "path": "/tool",
+                "children": [
+                    {
+                        "component": "system/groovy/index",
+                        "name": "Groovy",
+                        "hidden": false,
+                        "path": "groovy",
+                        "meta": {
+                            "title": "GroovyScript",
+                            "noCache": true,
+                            "icon": "bug"
+                        }
+                    },
+                    {
+                        "component": "tool/build/index",
+                        "name": "Build",
+                        "hidden": true,
+                        "path": "build",
+                        "meta": {
+                            "title": "\u8868\u5355\u6784\u5efa",
+                            "noCache": true,
+                            "icon": "build"
+                        }
+                    },
+                    {
+                        "component": "components/icons/index",
+                        "name": "Icons",
+                        "hidden": false,
+                        "path": "icons",
+                        "meta": {
+                            "title": "ICONS\u9884\u89c8",
+                            "noCache": true,
+                            "icon": "icon"
+                        }
+                    }
+                ],
+                "name": "Tool",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": false,
+                "meta": {
+                    "title": "\u7cfb\u7edf\u5de5\u5177",
+                    "noCache": true,
+                    "icon": "tool"
+                },
+                "redirect": "noRedirect"
+            },
+            {
+                "path": "/logMenus",
+                "children": [
+                    {
+                        "component": "monitor/logs/logininfo",
+                        "name": "/monitor/logs/logininfo",
+                        "hidden": true,
+                        "path": "/monitor/logs/logininfo",
+                        "meta": {
+                            "title": "\u7528\u6237\u767b\u5f55\u65e5\u5fd7",
+                            "noCache": true,
+                            "icon": "logininfor"
+                        }
+                    },
+                    {
+                        "component": "monitor/logs/operation",
+                        "name": "/monitor/logs/operation",
+                        "hidden": true,
+                        "path": "/monitor/logs/operation",
+                        "meta": {
+                            "title": "\u7528\u6237\u64cd\u4f5c\u65e5\u5fd7",
+                            "noCache": true,
+                            "icon": "button"
+                        }
+                    }
+                ],
+                "name": "LogMenus",
+                "alwaysShow": true,
+                "component": "Layout",
+                "hidden": true,
+                "meta": {
+                    "title": "\u65e5\u5fd7\u83dc\u5355",
+                    "noCache": true,
+                    "icon": "list"
+                },
+                "redirect": "noRedirect"
+            }
+        ],
+        "code": 200,
+        "msg": "SUCCESS"
+    },
+    "url": "http://admin.1000mz.com/prod-api/getRouters",
+    "request_method": "GET",
+    "response_code": 200,
+    "request_body": ""
+}

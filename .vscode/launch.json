@@ -6,7 +6,7 @@
     "configurations": [
         
         {
-            "type": "lldb-mi",
+            "type": "lldb",
             "request": "launch",
             "name": "Launch Program",
             "target": "./bin/executable",

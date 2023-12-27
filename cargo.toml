@@ -1,5 +1,5 @@
 [workspace]
-members = ["dat_json"]
+members = ["dat_json","json_typegen/json_typegen_cli"]
 default-members = ["dat_json"]
 resolver = "2"
 # 开发模板, 对应`cargo build`命令

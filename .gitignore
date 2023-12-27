@@ -12,3 +12,4 @@ Cargo.lock
 *dir
 *.lock
 *.exe
+/output

@@ -1,0 +1,365 @@
+{
+    "response_data": {
+        "data": {
+            "siteName": "\u601d\u5a01\u63a7",
+            "rows": [
+                {
+                    "id": "390567488348229",
+                    "isNew": false,
+                    "children": [
+                        {
+                            "id": "390567566614597",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390567566614597",
+                                "path": "news/hy/"
+                            },
+                            "checked": false,
+                            "parentId": "390567488348229",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u884c\u4e1a\u65b0\u95fb"
+                        },
+                        {
+                            "id": "390570590720069",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390570590720069",
+                                "path": "news/swk/"
+                            },
+                            "checked": false,
+                            "parentId": "390567488348229",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u601d\u5a01\u63a7\u65b0\u95fb"
+                        }
+                    ],
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "http://admin.1000mz.com/prod-api/preview/swikoon/resources/image/2023/03/17/396941061038149.png",
+                        "description": "1",
+                        "logo": "iurl://resources/image/2023/03/17/396941061038149.png?type=resource&id=396941061038149&sid=1630092239507464193",
+                        "internalUrl": "iurl://catalog?id=390567488348229",
+                        "path": "news/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u65b0\u95fb\u4e2d\u5fc3"
+                },
+                {
+                    "id": "390570663739461",
+                    "isNew": false,
+                    "children": [
+                        {
+                            "id": "390570748936261",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390570748936261",
+                                "path": "product/dk/"
+                            },
+                            "checked": false,
+                            "parentId": "390570663739461",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "DK\u7cfb\u5217"
+                        },
+                        {
+                            "id": "390570814517317",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390570814517317",
+                                "path": "product/gk/"
+                            },
+                            "checked": false,
+                            "parentId": "390570663739461",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "GK\u7cfb\u5217"
+                        }
+                    ],
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "",
+                        "description": "",
+                        "logo": "",
+                        "internalUrl": "iurl://catalog?id=390570663739461",
+                        "path": "product/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u4ea7\u54c1\u4e2d\u5fc3"
+                },
+                {
+                    "id": "390570870935621",
+                    "isNew": false,
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "",
+                        "description": "",
+                        "logo": "",
+                        "internalUrl": "iurl://catalog?id=390570870935621",
+                        "path": "case/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u5e94\u7528\u9886\u57df"
+                },
+                {
+                    "id": "390570940239941",
+                    "isNew": false,
+                    "children": [
+                        {
+                            "id": "390571037143109",
+                            "isNew": false,
+                            "children": [
+                                {
+                                    "id": "390571116064837",
+                                    "isNew": false,
+                                    "isRoot": false,
+                                    "props": {
+                                        "logoSrc": "",
+                                        "description": "",
+                                        "logo": "",
+                                        "internalUrl": "iurl://catalog?id=390571116064837",
+                                        "path": "support/download/ztrj/"
+                                    },
+                                    "checked": false,
+                                    "parentId": "390571037143109",
+                                    "isDisabled": false,
+                                    "isDefaultExpanded": false,
+                                    "label": "\u7ec4\u6001\u8f6f\u4ef6"
+                                },
+                                {
+                                    "id": "390571186876485",
+                                    "isNew": false,
+                                    "isRoot": false,
+                                    "props": {
+                                        "logoSrc": "",
+                                        "description": "",
+                                        "logo": "",
+                                        "internalUrl": "iurl://catalog?id=390571186876485",
+                                        "path": "support/download/bcrj/"
+                                    },
+                                    "checked": false,
+                                    "parentId": "390571037143109",
+                                    "isDisabled": false,
+                                    "isDefaultExpanded": false,
+                                    "label": "\u7f16\u7a0b\u8f6f\u4ef6"
+                                },
+                                {
+                                    "id": "390571266605125",
+                                    "isNew": false,
+                                    "isRoot": false,
+                                    "props": {
+                                        "logoSrc": "",
+                                        "description": "",
+                                        "logo": "",
+                                        "internalUrl": "iurl://catalog?id=390571266605125",
+                                        "path": "support/download/jszl/"
+                                    },
+                                    "checked": false,
+                                    "parentId": "390571037143109",
+                                    "isDisabled": false,
+                                    "isDefaultExpanded": false,
+                                    "label": "\u6280\u672f\u8d44\u6599"
+                                }
+                            ],
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390571037143109",
+                                "path": "support/download/"
+                            },
+                            "checked": false,
+                            "parentId": "390570940239941",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u8d44\u6599\u4e0b\u8f7d"
+                        }
+                    ],
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "",
+                        "description": "",
+                        "logo": "",
+                        "internalUrl": "iurl://catalog?id=390570940239941",
+                        "path": "support/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u6280\u672f\u652f\u6301"
+                },
+                {
+                    "id": "390571341672517",
+                    "isNew": false,
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "",
+                        "description": "",
+                        "logo": "",
+                        "internalUrl": "iurl://catalog?id=390571341672517",
+                        "path": "tutorial/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u57f9\u8bad\u6559\u7a0b"
+                },
+                {
+                    "id": "390571397627973",
+                    "isNew": false,
+                    "children": [
+                        {
+                            "id": "390571673047109",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390571673047109",
+                                "path": "aboutus/"
+                            },
+                            "checked": false,
+                            "parentId": "390571397627973",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u5173\u4e8e\u6211\u4eec"
+                        },
+                        {
+                            "id": "390571784261701",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390571784261701",
+                                "path": "contactus/"
+                            },
+                            "checked": false,
+                            "parentId": "390571397627973",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u8054\u7cfb\u6211\u4eec"
+                        },
+                        {
+                            "id": "390572061470789",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390572061470789",
+                                "path": "zizhi/"
+                            },
+                            "checked": false,
+                            "parentId": "390571397627973",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u4f01\u4e1a\u8d44\u8d28"
+                        },
+                        {
+                            "id": "390571849691205",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390571849691205",
+                                "path": "business/"
+                            },
+                            "checked": false,
+                            "parentId": "390571397627973",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u5408\u4f5c\u5171\u8d62"
+                        },
+                        {
+                            "id": "390571977228357",
+                            "isNew": false,
+                            "isRoot": false,
+                            "props": {
+                                "logoSrc": "",
+                                "description": "",
+                                "logo": "",
+                                "internalUrl": "iurl://catalog?id=390571977228357",
+                                "path": "help/"
+                            },
+                            "checked": false,
+                            "parentId": "390571397627973",
+                            "isDisabled": false,
+                            "isDefaultExpanded": false,
+                            "label": "\u5e38\u89c1\u95ee\u9898"
+                        }
+                    ],
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "",
+                        "description": "",
+                        "logo": "",
+                        "internalUrl": "iurl://catalog?id=390571397627973",
+                        "path": "company/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u516c\u53f8\u4ecb\u7ecd"
+                },
+                {
+                    "id": "390571481559109",
+                    "isNew": false,
+                    "isRoot": true,
+                    "props": {
+                        "logoSrc": "",
+                        "description": "",
+                        "logo": "",
+                        "internalUrl": "iurl://catalog?id=390571481559109",
+                        "path": "feedback/"
+                    },
+                    "checked": false,
+                    "parentId": "0",
+                    "isDisabled": false,
+                    "isDefaultExpanded": false,
+                    "label": "\u5ba2\u6237\u53cd\u9988"
+                }
+            ]
+        },
+        "code": 200,
+        "msg": "SUCCESS"
+    },
+    "url": "http://admin.1000mz.com/prod-api/cms/catalog/treeData",
+    "request_method": "GET",
+    "response_code": 200,
+    "request_body": ""
+}
