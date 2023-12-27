@@ -26,6 +26,8 @@ pub use error::{Error, Result};
 
 // use package_json::*;
 use json_typegen::json_typegen;
+use json_typegen_shared::internal_util::display_error_with_causes;
+use json_typegen_shared::{codegen, codegen_from_macro, parse, Options, OutputMode};
 use std::sync::Mutex;
 use std::{env, path::PathBuf};
 use walkdir::WalkDir;
@@ -120,13 +122,55 @@ fn json_to_file(line: &str) {
         let _btm_strut: BTreeMap<String, String> = BTreeMap::new();
         // println!("new line::{},len{}\r\n", ip.trim(),ip.trim().len());
         // println!("#start:{}\r\n\r\n#end", ip);
-        let output_file_name = env::current_dir().unwrap().join("output").join(format!("{}.json", name)); //[name.clone(),".json".to_string()].join());
-        
+        let output_file_name = env::current_dir()
+            .unwrap()
+            .join("output")
+            .join(format!("{}.json", name)); //[name.clone(),".json".to_string()].join());
+
         // write_to_file(output_file_name, &response_data.get("data").unwrap().to_string());
-        let json_file = output_file_name.clone().into_os_string().into_string().unwrap();
-        write_to_file(output_file_name, &serde_json::to_string_pretty(&response_data.get("data")).unwrap());
-        
-        json_typegen!("Root",json_file);
+        let json_file = output_file_name
+            .clone()
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        write_to_file(
+            output_file_name.clone(),
+            &serde_json::to_string_pretty(&response_data.get("data")).unwrap(),
+        );
+
+        let code = {
+            //  let name = matches.value_of("name").unwrap_or("Root");
+            // let mut options = match matches.value_of("options") {
+            //     Some(block) => parse::options(block)?,
+            //     None => Options::default(),
+            // };
+            // if let Some(output_mode) = matches.value_of("output-mode") {
+            //     options.output_mode = OutputMode::parse(output_mode).ok_or("Invalid output mode")?;
+            // }
+
+            codegen(
+                name,
+                &serde_json::to_string_pretty(&response_data.get("data")).unwrap(),
+                Options::default(),
+            )
+        };
+        match code {
+            Ok(v)=>{
+                write_to_file(
+                            format!("{}.rs", output_file_name.to_string_lossy()),
+                            &v,
+                        );
+
+            },
+            _ =>{},
+            
+        }
+       
+
+        // println!("{:#}",code.unwrap(""));
+
+        // json_typegen!("Root",json_file);
+
         // parse_object("data", response_data.get("data").unwrap());
         // let content = FILE_STRUCTS.lock().unwrap().clone();
         // write_to_file(output_file_name, &serde_json::to_string(&content).unwrap());
@@ -160,8 +204,13 @@ fn test() {
     let _dir = path.as_path().read_dir().unwrap();
     // let mut current_dir:String = inner_main().unwrap().to_str().unwrap().to_string();
     // let mut current_dir = path.into_os_string().into_string().unwrap();
-    let output_dir = path.join("output");     
-    let json_dir = env::current_dir().unwrap().join("json").into_os_string().into_string().unwrap();
+    let output_dir = path.join("output");
+    let json_dir = env::current_dir()
+        .unwrap()
+        .join("json")
+        .into_os_string()
+        .into_string()
+        .unwrap();
     println!("{json_dir:#?}");
     let entries = WalkDir::new(json_dir)
         .into_iter()
@@ -170,14 +219,16 @@ fn test() {
     for entry in entries {
         let file_name = entry.path().to_str().expect("REASON").to_string();
         // let name = entry.file_name().to_str().expect("REASON").to_string() + ".rs";
-        if std::path::Path::new(&file_name).extension().map_or(false, |ext| ext.eq_ignore_ascii_case("dat")) 
+        if std::path::Path::new(&file_name)
+            .extension()
+            .map_or(false, |ext| ext.eq_ignore_ascii_case("dat"))
         {
             // if file_name.ends_with(".dat") { //  let file_content = read_file(file_name.clone()).unwrap();
             if let Ok(lines) = read_lines_wrap(file_name.clone()) {
                 // Consumes the iterator, returns an (Optional) String
                 for line in lines {
-                    if let Ok(ip) = line {                        
-                        if !ip.trim().is_empty() {                          
+                    if let Ok(ip) = line {
+                        if !ip.trim().is_empty() {
                             json_to_file(&ip[0..ip.len()]);
                         }
                     }
@@ -213,7 +264,7 @@ fn test() {
             //     // println!("{:#?}",FILE_STRUCTS.lock().unwrap());
             //     let content = FILE_STRUCTS.lock().unwrap().clone();
             //     write_to_file(output_file_name, &serde_json::to_string(&content).unwrap());
-            // }   
+            // }
         }
     }
     // let markdown_files = glob("*.json")?;
@@ -238,17 +289,16 @@ fn match_value(_v: Value) -> i32 {
 
 fn parse_object(obj_key: &str, objs: &Value) {
     // let obj = objs.as_object();
-    match objs.as_object(){
-
-        Some(obj)=>{
-        // let mut keys_vec: Vec<String> = Vec::new();
+    match objs.as_object() {
+        Some(obj) => {
+            // let mut keys_vec: Vec<String> = Vec::new();
             let _arr_vec: Vec<Vec<Value>> = Vec::new();
             let mut obj_vec: Vec<Map<String, Value>> = Vec::new();
             let mut btm_strut: BTreeMap<String, String> = BTreeMap::new();
             let keys = obj.keys();
             // json_typegen!(obj.to_string());
-            for key in keys{
-                println!("{}",key)
+            for key in keys {
+                println!("{}", key)
             }
             // for (key, v) in obj {
             //     match v {
@@ -310,10 +360,9 @@ fn parse_object(obj_key: &str, objs: &Value) {
             if !tree.contains_key(obj_key) {
                 tree.insert(obj_key.to_string(), btm_strut.clone());
             }
-
         }
-        _=>{}
-    }   
+        _ => {}
+    }
     // println!("{}__btree:{:#?}", obj_key, btm_strut);
     // keys_vec
 }

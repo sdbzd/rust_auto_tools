@@ -31,3 +31,8 @@ indexmap = { version = "1", features = ["serde-1"] }
 lazy_static = "1"
 json_typegen = "0.7"
 nom="*"
+
+[dependencies.json_typegen_shared]
+path = "../json_typegen/json_typegen_shared"
+version = "0.7"
+features = ["progress"]
