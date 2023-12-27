@@ -1,0 +1,36 @@
+[package]
+name = "package_json_schema"
+version = "0.2.1"
+authors = ["Ifiok Jr. <ifiokotung@gmail.com>"]
+categories = ["encoding", "config"]
+documentation = "https://docs.rs/package_json_schema"
+edition = "2021"
+homepage = "https://github.com/ifiokjr/package_json_schema"
+include = ["src/**/*.rs", "Cargo.toml", "readme.md", "license"]
+keywords = ["schema", "package", "npm", "node", "json"]
+license = "Unlicense"
+readme = "readme.md"
+repository = "https://github.com/ifiokjr/package_json_schema"
+description = "Parse content from `package.json` content and consume the result as a `PackageJson` struct."
+
+[lib]
+crate-type = ["lib"]
+
+[dependencies]
+cfg-if = "1"
+doc-comment = "0.3"
+indexmap = { version = "1", features = ["serde-1"] }
+lazy_static = "1"
+regex = "1"
+semver = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order", "std"] }
+thiserror = "1"
+typed-builder = "0.14"
+validator = { version = "0.16", features = ["derive"], optional = true }
+
+[dev-dependencies]
+insta = { version = "1", features = ["json"] }
+
+[features]
+validate = ["dep:validator"]

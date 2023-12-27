@@ -1,0 +1,464 @@
+database:
+  url: mysql://postgres:postgres@localhost:3306/ruoyi_web
+  username:
+  password: 
+
+codegen:
+  app-name: chimes-rust
+  app-authors: Long(long.zou@gmail.com)
+  app-edition: "2021"
+  app-version: 0.1.0
+  output-path: d:/temp/chimes-rust-v2/
+  always-generate-handler: true
+  always-generate-entity: true
+  always-override: true
+  allow-bool-widecard: true
+  config-template-generate: D:/gitspaces/longzou/rustspace/rust/rbatisgen/conf/rbatis.yml
+  api-handler-prefix: /api/v1
+  webserver-port: "10999"
+  schema-name: chimesrust
+  tables:
+    - all-field-option: "true"
+      api-handler-name: gen_table
+      auto-generate-key: ""
+      comment: 代码生成业务表
+      logic-deletion: "true"
+      name: gen_table
+      page-query: "true"
+      struct-name: GenTable
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: gen_table_column
+      auto-generate-key: ""
+      comment: 代码生成业务表字段
+      logic-deletion: "true"
+      name: gen_table_column
+      page-query: "true"
+      struct-name: GenTableColumn
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_blob_triggers
+      auto-generate-key: ""
+      comment: Blob类型的触发器表
+      logic-deletion: "true"
+      name: qrtz_blob_triggers
+      page-query: "true"
+      struct-name: QrtzBlobTriggers
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_calendars
+      auto-generate-key: ""
+      comment: 日历信息表
+      logic-deletion: "true"
+      name: qrtz_calendars
+      page-query: "true"
+      struct-name: QrtzCalendars
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_cron_triggers
+      auto-generate-key: ""
+      comment: Cron类型的触发器表
+      logic-deletion: "true"
+      name: qrtz_cron_triggers
+      page-query: "true"
+      struct-name: QrtzCronTriggers
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_fired_triggers
+      auto-generate-key: ""
+      comment: 已触发的触发器表
+      logic-deletion: "true"
+      name: qrtz_fired_triggers
+      page-query: "true"
+      struct-name: QrtzFiredTriggers
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_job_details
+      auto-generate-key: ""
+      comment: 任务详细信息表
+      logic-deletion: "true"
+      name: qrtz_job_details
+      page-query: "true"
+      struct-name: QrtzJobDetails
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_locks
+      auto-generate-key: ""
+      comment: 存储的悲观锁信息表
+      logic-deletion: "true"
+      name: qrtz_locks
+      page-query: "true"
+      struct-name: QrtzLocks
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_paused_trigger_grps
+      auto-generate-key: ""
+      comment: 暂停的触发器表
+      logic-deletion: "true"
+      name: qrtz_paused_trigger_grps
+      page-query: "true"
+      struct-name: QrtzPausedTriggerGrps
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_scheduler_state
+      auto-generate-key: ""
+      comment: 调度器状态表
+      logic-deletion: "true"
+      name: qrtz_scheduler_state
+      page-query: "true"
+      struct-name: QrtzSchedulerState
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_simple_triggers
+      auto-generate-key: ""
+      comment: 简单触发器的信息表
+      logic-deletion: "true"
+      name: qrtz_simple_triggers
+      page-query: "true"
+      struct-name: QrtzSimpleTriggers
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_simprop_triggers
+      auto-generate-key: ""
+      comment: 同步机制的行锁表
+      logic-deletion: "true"
+      name: qrtz_simprop_triggers
+      page-query: "true"
+      struct-name: QrtzSimpropTriggers
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: qrtz_triggers
+      auto-generate-key: ""
+      comment: 触发器详细信息表
+      logic-deletion: "true"
+      name: qrtz_triggers
+      page-query: "true"
+      struct-name: QrtzTriggers
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_config
+      auto-generate-key: ""
+      comment: 参数配置表
+      logic-deletion: "true"
+      name: sys_config
+      page-query: "true"
+      struct-name: SysConfig
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_dept
+      auto-generate-key: ""
+      comment: 部门表
+      logic-deletion: "true"
+      name: sys_dept
+      page-query: "true"
+      struct-name: SysDept
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_dict_data
+      auto-generate-key: ""
+      comment: 字典数据表
+      logic-deletion: "true"
+      name: sys_dict_data
+      page-query: "true"
+      struct-name: SysDictData
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_dict_type
+      auto-generate-key: ""
+      comment: 字典类型表
+      logic-deletion: "true"
+      name: sys_dict_type
+      page-query: "true"
+      struct-name: SysDictType
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_job
+      auto-generate-key: ""
+      comment: 定时任务调度表
+      logic-deletion: "true"
+      name: sys_job
+      page-query: "true"
+      struct-name: SysJob
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_job_log
+      auto-generate-key: ""
+      comment: 定时任务调度日志表
+      logic-deletion: "true"
+      name: sys_job_log
+      page-query: "true"
+      struct-name: SysJobLog
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_logininfor
+      auto-generate-key: ""
+      comment: 系统访问记录
+      logic-deletion: "true"
+      name: sys_logininfor
+      page-query: "true"
+      struct-name: SysLogininfor
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_menu
+      auto-generate-key: ""
+      comment: 菜单权限表
+      logic-deletion: "true"
+      name: sys_menu
+      page-query: "true"
+      struct-name: SysMenu
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_notice
+      auto-generate-key: ""
+      comment: 通知公告表
+      logic-deletion: "true"
+      name: sys_notice
+      page-query: "true"
+      struct-name: SysNotice
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_oper_log
+      auto-generate-key: ""
+      comment: 操作日志记录
+      logic-deletion: "true"
+      name: sys_oper_log
+      page-query: "true"
+      struct-name: SysOperLog
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_post
+      auto-generate-key: ""
+      comment: 岗位信息表
+      logic-deletion: "true"
+      name: sys_post
+      page-query: "true"
+      struct-name: SysPost
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_role
+      auto-generate-key: ""
+      comment: 角色信息表
+      logic-deletion: "true"
+      name: sys_role
+      page-query: "true"
+      struct-name: SysRole
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_role_dept
+      auto-generate-key: ""
+      comment: 角色和部门关联表
+      logic-deletion: "true"
+      name: sys_role_dept
+      page-query: "true"
+      struct-name: SysRoleDept
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_role_menu
+      auto-generate-key: ""
+      comment: 角色和菜单关联表
+      logic-deletion: "true"
+      name: sys_role_menu
+      page-query: "true"
+      struct-name: SysRoleMenu
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_user
+      auto-generate-key: ""
+      comment: 用户信息表
+      logic-deletion: "true"
+      name: sys_user
+      page-query: "true"
+      struct-name: SysUser
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_user_post
+      auto-generate-key: ""
+      comment: 用户与岗位关联表
+      logic-deletion: "true"
+      name: sys_user_post
+      page-query: "true"
+      struct-name: SysUserPost
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+    - all-field-option: "true"
+      api-handler-name: sys_user_role
+      auto-generate-key: ""
+      comment: 用户和角色关联表
+      logic-deletion: "true"
+      name: sys_user_role
+      page-query: "true"
+      struct-name: SysUserRole
+      tree-parent-field: ""
+      update-seletive: "true"
+      update-skip-fields: ""
+
+
+   
+  relations:
+    # - struct-name: ChimesUserRoles
+    #   comment: 用户角色关系
+    #   major-table: chimes_user
+    #   extend-major: true
+    #   generate-handler: true
+    #   generate-select: true
+    #   generate-save: true
+    #   generate-delete: true
+    #   one-to-one:
+    #     - table-name: chimes_profile
+    #       join-field: user_id
+    #       major-field: user_id
+    #   one-to-many:
+    #     - table-name: chimes_role
+    #       join-field: role_id
+    #       major-field: user_id
+    #       middle-table: chimes_users_roles
+    # - struct-name: ChimesRoleMenus
+    #   comment: 角色菜单功能关系
+    #   major-table: chimes_role
+    #   extend-major: true
+    #   generate-handler: true
+    #   generate-select: true
+    #   generate-save: true
+    #   generate-delete: true
+    #   one-to-many:
+    #     - table-name: chimes_menu
+    #       join-field: menu_id
+    #       major-field: role_id
+    #       middle-table: chimes_roles_menus
+    #     - table-name: chimes_permission
+    #       join-field: id
+    #       major-field: role_id
+    #       middle-table: chimes_roles_permissions          
+    # - struct-name: ChimesUserDetailInfo
+    #   comment: 用户详情信息
+    #   major-table: chimes_user
+    #   extend-major: true
+    #   generate-handler: true
+    #   generate-select: true
+    #   generate-save: true
+    #   generate-delete: true
+    #   one-to-one:
+    #     - table-name: chimes_dept
+    #       join-field: dept_id
+    #       major-field: dept_id
+    #       readonly: true
+    #   one-to-many:
+    #     - table-name: chimes_role
+    #       join-field: role_id
+    #       major-field: user_id
+    #       middle-table: chimes_users_roles
+    #     - table-name: chimes_job
+    #       join-field: job_id
+    #       major-field: user_id
+    #       middle-table: chimes_users_jobs
+  queries:
+    # - base-sql: SELECT p.*, cu.username FROM chimes_permission p LEFT JOIN chimes_roles_permissions rp ON p.id = rp.permission_id  LEFT JOIN chimes_users_roles cur ON rp.role_id = cur.role_id  LEFT JOIN chimes_user cu ON cur.user_id  = cu.user_id  AND cu.username  = ?  WHERE p.api_method = ? AND p.api_pattern  = ? 
+    #   struct-name: QueryUserPermission
+    #   comment: 用户权限查询
+    #   generate-handler: true
+    #   single-result: false
+    #   api-handler-name: users
+    #   params:
+    #     - column-names: username
+    #       column-types: varchar
+    #       default-value: admin
+    #     - column-names: api_method
+    #       column-types: varchar
+    #       default-value: POST
+    #     - column-names: api_pattern
+    #       column-types: varchar
+    #       default-value: /api/v1/user/save
+
+    # - base-sql: SELECT p.* FROM chimes_menu p INNER JOIN chimes_roles_menus rp ON p.menu_id = rp.menu_id INNER JOIN chimes_users_roles cur ON rp.role_id = cur.role_id AND cu.username = ?  INNER JOIN chimes_user cu ON cur.user_id  = cu.user_id 
+    #   struct-name: QueryUserMenus
+    #   comment: 用户菜单查询
+    #   generate-handler: false
+    #   single-result: false
+    #   api-handler-name: menu
+    #   params:
+    #     - column-names: username
+    #       column-types: varchar
+    #       default-value: admin
+    # - base-sql: select cd.name dict_name, cdd.* from chimes_dict_detail cdd inner join chimes_dict cd on cdd.dict_id  = cd.dict_id where cd.name  in (?)
+    #   struct-name: QueryDictDetail
+    #   comment: 字典详情查询
+    #   generate-handler: true
+    #   single-result: false
+    #   api-handler-name: dictdetail
+    #   params:
+    #     - column-names: dict_name
+    #       column-types: varchar
+    #       default-value: dept_status
+just-test:
+  bool-variant:
+  - true
+  - false
+  - true
+  - true
+  int-variant:
+  - 120
+  - 330
+  - 450
+
+
+
+      
+
+

@@ -1,0 +1,19 @@
+# [workspace]
+members = [
+  ".",
+  "sqlx-sqlhelper-proc-macros",
+]
+
+[package]
+description = "基于sqlx和过程宏实现的sqlhelper"
+documentation = "https://docs.rs/sqlx-sqlhelper"
+edition = "2021"
+license = "Apache-2.0"
+name = "sqlx-sqlhelper"
+readme = "README.md"
+repository = "https://github.com/zzliujianbo/sqlx-sqlhelper"
+version = "0.1.0"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sqlx-sqlhelper-proc-macros = {path = "sqlx-sqlhelper-proc-macros", version = "0.1.0"}

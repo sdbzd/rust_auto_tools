@@ -1,0 +1,43 @@
+{
+    "msg": "操作成功",
+    "code": 200,
+    "data": [{
+            "searchValue": null,
+            "createBy": "admin",
+            "createTime": "2022-08-01 12:01:44",
+            "updateBy": null,
+            "updateTime": null,
+            "remark": "系统默认是",
+            "params": {},
+            "dictCode": 12,
+            "dictSort": 1,
+            "dictLabel": "是",
+            "dictValue": "Y",
+            "dictType": "sys_yes_no",
+            "cssClass": "",
+            "listClass": "primary",
+            "isDefault": "Y",
+            "status": "0",
+            "default": true
+        },
+        {
+            "searchValue": null,
+            "createBy": "admin",
+            "createTime": "2022-08-01 12:01:44",
+            "updateBy": null,
+            "updateTime": null,
+            "remark": "系统默认否",
+            "params": {},
+            "dictCode": 13,
+            "dictSort": 2,
+            "dictLabel": "否",
+            "dictValue": "N",
+            "dictType": "sys_yes_no",
+            "cssClass": "",
+            "listClass": "danger",
+            "isDefault": "N",
+            "status": "0",
+            "default": false
+        }
+    ]
+}

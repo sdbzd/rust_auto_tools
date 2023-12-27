@@ -1,0 +1,18 @@
+[package]
+description = "基于sqlx和过程宏实现的sqlhelper"
+documentation = "https://docs.rs/sqlx-sqlhelper-proc-macros"
+edition = "2021"
+license = "Apache-2.0"
+name = "sqlx-sqlhelper-proc-macros"
+repository = "https://github.com/zzliujianbo/sqlx-sqlhelper"
+version = "0.1.0"
+
+[lib]
+proc-macro = true
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+Inflector = {version = "0.11.4", default-features = false}
+proc-macro2 = {version = "1", default-features = false}
+quote = "1"
+syn = {version = "1", features = ["full"]}

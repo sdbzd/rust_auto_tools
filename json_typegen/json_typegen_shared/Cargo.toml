@@ -1,0 +1,33 @@
+[package]
+name = "json_typegen_shared"
+version = "0.7.0"
+authors = ["Erik Vesteraas <erik@vestera.as>"]
+license = "MIT OR Apache-2.0"
+description = "Generate types from JSON samples. See repository for CLI, website and procedural macro variants."
+keywords = ["json", "code-generation"]
+categories = ["encoding"]
+homepage = "https://typegen.vestera.as"
+repository = "https://github.com/evestera/json_typegen"
+documentation = "https://docs.rs/json_typegen_shared"
+readme = "README.md"
+edition = "2018"
+exclude = ["/benches/"]
+
+[features]
+unstable = []
+default = ["remote-samples", "local-samples", "option-parsing"]
+remote-samples = ["ureq"]
+local-samples = []
+option-parsing = ["syn", "synom"]
+progress = ["indicatif"]
+
+[dependencies]
+ureq = { version = "2.4.0", optional = true, features = ["charset"] }
+thiserror = "1.0"
+linked-hash-map = "0.5.4"
+syn = { version = "0.11", features = ["full", "parsing"], optional = true }
+synom = { version = "0.11.3", optional = true }
+indicatif = { version = "0.16.2", optional = true }
+
+[dev-dependencies]
+testsyn = { package = "syn", version = "0.15", features = ["full", "parsing", "extra-traits"] }

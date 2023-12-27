@@ -1,0 +1,14 @@
+username: ruoyi_web
+password: ruoyi_web
+host: 127.0.0.1
+port: 3306
+database: ruoyi_web2
+files: 0 # 0.多文件，1单文件
+include_tables: # Include tables, can be ignored.
+#  - table_name
+  # - gen_table
+exclude_tables: # Exclude, tables, can be ignored.
+#  - table_name
+output_dir: ./dir # code output directory
+handlers_dir: ./output/handlers # code output directory
+models_dir: ./output/handlers/models # code output directory

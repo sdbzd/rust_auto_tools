@@ -1,0 +1,43 @@
+{
+    "msg": "操作成功",
+    "code": 200,
+    "data": [{
+            "searchValue": null,
+            "createBy": "admin",
+            "createTime": "2022-08-01 12:01:45",
+            "updateBy": null,
+            "updateTime": null,
+            "remark": "正常状态",
+            "params": {},
+            "dictCode": 16,
+            "dictSort": 1,
+            "dictLabel": "正常",
+            "dictValue": "0",
+            "dictType": "sys_notice_status",
+            "cssClass": "",
+            "listClass": "primary",
+            "isDefault": "Y",
+            "status": "0",
+            "default": true
+        },
+        {
+            "searchValue": null,
+            "createBy": "admin",
+            "createTime": "2022-08-01 12:01:46",
+            "updateBy": null,
+            "updateTime": null,
+            "remark": "关闭状态",
+            "params": {},
+            "dictCode": 17,
+            "dictSort": 2,
+            "dictLabel": "关闭",
+            "dictValue": "1",
+            "dictType": "sys_notice_status",
+            "cssClass": "",
+            "listClass": "danger",
+            "isDefault": "N",
+            "status": "0",
+            "default": false
+        }
+    ]
+}

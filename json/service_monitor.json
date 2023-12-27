@@ -1,0 +1,44 @@
+{
+    "msg": "操作成功",
+    "code": 200,
+    "data": {
+        "cpu": {
+            "cpuNum": 2,
+            "total": 198000.0,
+            "sys": 0.0,
+            "used": 2.02,
+            "wait": 0.0,
+            "free": 97.98
+        },
+        "mem": { "total": 7.56, "used": 3.72, "free": 3.84, "usage": 49.25 },
+        "jvm": {
+            "total": 510.0,
+            "max": 1008.0,
+            "free": 252.09,
+            "version": "1.8.0_111",
+            "home": "/usr/java/jdk1.8.0_111/jre",
+            "startTime": "2022-09-26 21:25:14",
+            "used": 257.91,
+            "runTime": "14天20小时10分钟",
+            "inputArgs": "[-Dname=target/ruoyi-vue.jar, -Duser.timezone=Asia/Shanghai, -Xms512m, -Xmx1024m, -XX:MetaspaceSize=128m, -XX:MaxMetaspaceSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -XX:+PrintGCDateStamps, -XX:+PrintGCDetails, -XX:NewRatio=1, -XX:SurvivorRatio=30, -XX:+UseParallelGC, -XX:+UseParallelOldGC]",
+            "usage": 50.57,
+            "name": "Java HotSpot(TM) 64-Bit Server VM"
+        },
+        "sys": {
+            "computerName": "iZwz94p7mycommzd52gme4Z",
+            "computerIp": "172.18.179.171",
+            "userDir": "/home/ruoyi/projects/ruoyi-vue",
+            "osName": "Linux",
+            "osArch": "amd64"
+        },
+        "sysFiles": [{
+            "dirName": "/",
+            "sysTypeName": "ext4",
+            "typeName": "/",
+            "total": "39.2 GB",
+            "free": "25.5 GB",
+            "used": "13.8 GB",
+            "usage": 35.05
+        }]
+    }
+}

@@ -1,0 +1,114 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch  EXE",
+            "program": "${workspaceRoot}/target/debug/sql_reverse.exe",
+            "args": ["mysql","-f","reverse_mysql.yml"],
+            // "env": [],
+            "cwd": "${workspaceRoot}"
+            
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sql_reverse'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sql_reverse",
+                    "--package=sql_reverse",
+                    
+                    // " mysql -f reverse_mysql.yml -s rs -n r.tera -m 1",
+                ],
+                "filter": {
+                    "name": "sql_reverse",
+                    "kind": "bin"
+                }
+            },
+            "args": ["mysql","-f","reverse_mysql.yml","-c","mysql_default.json","-s","rs","-n","r.tera","-m","1",],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sql_reverse'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sql_reverse",
+                    "--package=sql_reverse"
+                ],
+                "filter": {
+                    "name": "sql_reverse",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sql_reverse_error'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sql_reverse_error"
+                ],
+                "filter": {
+                    "name": "sql_reverse_error",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sql_reverse_struct'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sql_reverse_struct"
+                ],
+                "filter": {
+                    "name": "sql_reverse_struct",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sql_reverse_template'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sql_reverse_template"
+                ],
+                "filter": {
+                    "name": "sql_reverse_template",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

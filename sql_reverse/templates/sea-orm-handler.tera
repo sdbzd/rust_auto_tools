@@ -1,0 +1,271 @@
+use core::query::{{ table.table_name -}}::{{ table.struct_name -}}Query;
+use entity::entities::{ {{ table.table_name -}}, {{ table.table_name -}}::Entity as {{ table.struct_name -}}};
+use core::{sea_orm::{Database, DatabaseConnection,DbErr}};
+// use sea_orm::{Database, DatabaseConnection, DbConn, DbErr};
+
+use actix_files::Files as Fs;
+use actix_web::{ error, get, middleware, post, web, App, Error, HttpRequest, HttpResponse, HttpServer, Result,};
+{# use entites::{{ table.struct_name -}}; #}
+use serde::{Deserialize, Serialize};
+use std::env;
+{# use tera::Tera; #}
+use crate::db::{DB,db_conn};
+// // {{ table.comment }} {{ table.table_name }}
+
+#[get("/")]
+pub async fn list(req: HttpRequest) -> Result<HttpResponse, Error> {
+    {# let template = &data.templates; #}
+    let conn = DB.get_or_init(db_conn).await;
+    // get params
+    let params = web::Query::<Params>::from_query(req.query_string()).unwrap();
+    let page = params.page.unwrap_or(1);
+    let {{ table.table_name -}}_per_page = params.items_per_page.unwrap_or(DEFAULT_POSTS_PER_PAGE);
+
+    let ({{ table.table_name -}}, num_pages) = {{ table.struct_name -}}Query::find_{{ table.table_name -}}_in_page(conn, page, {{ table.table_name -}}_per_page)
+        .await
+        .expect("Cannot find {{ table.table_name -}} in page");
+    {# let mut ctx = tera::Context::new();
+    ctx.insert("posts", &posts);
+    ctx.insert("page", &page);
+    ctx.insert("posts_per_page", &posts_per_page);
+    ctx.insert("num_pages", &num_pages); #}
+
+    {# let body = template
+        .render("index.html.tera", &ctx)
+        .map_err(|_| error::ErrorInternalServerError("Template error"))?; #}
+    Ok(HttpResponse::Ok().content_type("text/html").body("body"))
+}
+
+#[get("/new")]
+pub async fn new() -> Result<HttpResponse, Error> {
+    let conn = DB.get_or_init(db_conn).await;
+    {# let template = &data.templates;
+    let ctx = tera::Context::new();
+    let body = template
+        .render("new.html.tera", &ctx)
+        .map_err(|_| error::ErrorInternalServerError("Template error"))?; #}
+    Ok(HttpResponse::Ok().content_type("text/html").body("body"))
+}
+
+#[post("/")]
+pub async fn create(post_form: web::Form<{{ table.table_name }}::Model>,) -> Result<HttpResponse, Error> {
+    let conn = DB.get_or_init(db_conn).await;
+    {# let conn = &data.conn;
+    let form = post_form.into_inner();
+    Mutation::create_post(conn, form)
+        .await
+        .expect("could not insert post"); #}
+    Ok(HttpResponse::Found()
+        .append_header(("location", "/"))
+        .finish())
+}
+
+#[get("/{id}")]
+pub async fn edit( id: web::Path<i32>) -> Result<HttpResponse, Error> {
+    let conn = DB.get_or_init(db_conn).await;
+    {# let conn = &data.conn;
+    let template = &data.templates;
+    let id = id.into_inner();
+
+    let {{ table.table_name }}: {{ table.table_name }}::Model = Query::find_post_by_id(conn, id)
+        .await
+        .expect("could not find post")
+        .unwrap_or_else(|| panic!("could not find post with id {id}"));
+
+    let mut ctx = tera::Context::new();
+    ctx.insert("post", &post);
+
+    let body = template
+        .render("edit.html.tera", &ctx)
+        .map_err(|_| error::ErrorInternalServerError("Template error"))?; #}
+    Ok(HttpResponse::Ok().content_type("text/html").body("body"))
+}
+
+#[post("/{id}")]
+pub async fn update(id: web::Path<i32>, post_form: web::Form<{{ table.table_name }}::Model>,) -> Result<HttpResponse, Error> {
+    let conn = DB.get_or_init(db_conn).await;
+    {# let conn = &data.conn;
+    let form = post_form.into_inner();
+    let id = id.into_inner();
+
+    Mutation::update_post_by_id(conn, id, form)
+        .await
+        .expect("could not edit post"); #}
+
+    Ok(HttpResponse::Found()
+        .append_header(("location", "/"))
+        .finish())
+}
+
+#[post("/delete/{id}")]
+pub async fn delete( id: web::Path<i32>) -> Result<HttpResponse, Error> {
+    let conn = DB.get_or_init(db_conn).await;
+    {# let conn = &data.conn;
+    let id = id.into_inner();
+    Mutation::delete_post(conn, id)
+        .await
+        .expect("could not delete post"); #}
+    Ok(HttpResponse::Found()
+        .append_header(("location", "/"))
+        .finish())
+}
+
+{# async fn not_found(data: web::Data<AppState>, request: HttpRequest) -> Result<HttpResponse, Error> {
+    let mut ctx = tera::Context::new();
+    ctx.insert("uri", request.uri().path());
+    let template = &data.templates;
+    let body = template
+        .render("error/404.html.tera", &ctx)
+                .map_err(|_| error::ErrorInternalServerError("Template error"))?; 
+    Ok(HttpResponse::Ok().content_type("text/html").body("body"))
+}
+#}
+{# pub struct {{ table.struct_name -}};
+impl {{ table.struct_name -}} {
+    /// 列表页
+    pub async fn index(db: Pool) -> HttpResponse {
+        match Model::list(&db).await {
+            Ok(v) => { Response::encrypt_data(&v) },
+            Err(message) => { Response::error(&message.to_string()) }
+        }
+    }
+} #}
+{# 
+pub const TABLE_NAME: & 'static str = "{{table.table_name}}";
+
+{% if table.comment -%}
+	/// {{ table.comment }} {{ table.table_name }}
+{% endif -%}
+{% for index in table.index_key -%}
+    /// 索引：{{index}}
+{% endfor -%}
+
+
+#[derive(Serialize, Deserialize, Debug, Clone, FromRow)]
+pub struct {{ table.struct_name }} {
+{%- for v in table.fields %}
+	{% if v.comment -%}
+	    /// {{ v.comment }} {% if v.database_field_type %} field_type: {{ v.database_field_type }}{% endif %}{% if v.default %} default: {{ v.default }}{% endif %} {% if v.default == '' %} default: ''{% endif %}
+	{% endif -%}
+	{% if v.is_null == 1 -%}
+    	pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+    {%- else -%}
+        {% if v.field_type == ' NaiveDateTime ' -%}
+            pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+        {%- else -%}
+            pub {{ v.field_name }}: {{ v.field_type }},
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor %}
+}
+
+
+impl {{table.struct_name}} {
+    /// table index_key:  {{table.index_key}}  length:  {{table.index_key | length}}
+    {%- if table.index_key | length == 1 -%} 
+        {% for key in table.index_key -%}
+        /// table index_key  {{table.index_key}}   {{table.index_key | length}}
+        pub async fn select_by{% for key in table.index_key %}_{{key}}{% endfor %}(pool:&sqlx::MySqlPool,
+            {%- for key in table.index_key -%} 
+                {{key}}:
+                    {%- for field in table.fields -%}
+                        {%- if field.field_name == key -%}
+                            {{- field.field_type -}}
+                        {%- endif -%}
+                    {%- endfor -%}
+            {%- endfor -%})-> Result<Option<{{table.struct_name}}>,sqlx::Error> { 
+            let mut conn = pool.acquire().await?;
+            let sql = "SELECT {%for v in table.fields -%}{%- if loop.index != 1 %},{% endif -%}
+            {{- v.field_name -}}{%- endfor%} FROM {{table.table_name}} WHERE {{key}} = ?";
+            let data = sqlx::query_as::<_, {{table.struct_name}}>(&sql)
+            {%- for key in table.index_key %}
+                .bind({{key}}){% endfor %}
+                .fetch_optional(&mut conn).await?;
+            Ok(data)
+        }
+
+        pub async fn update_by{% for key in table.index_key %}_{{key}}{% endfor %}(&self, pool:&sqlx::MySqlPool) -> Result<(),sqlx::Error> {
+            let mut conn = pool.acquire().await?;
+            let sql = "UPDATE {{table.table_name}} SET {% for field in table.fields -%}
+                    {%- if field.field_name not in table.index_key %}{{ field.field_name }} = ?{% if loop.last == false %},{% endif %}{% endif %}
+                {%- endfor %} WHERE article_id = ?";
+            sqlx::query(sql)
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key %}
+                .bind(&self.{{field.field_name}}){% endif %}{% endfor %}
+            {%- for key in table.index_key %}
+                .bind(&self.{{key}})
+            {%- endfor %}
+                .execute(&mut conn).await?;
+            Ok(())
+        }
+
+        pub async fn insert(&self, pool:&sqlx::MySqlPool) -> Result<u64,sqlx::Error> {
+            let mut conn = pool.acquire().await?;
+            let sql = "INSERT INTO {{table.table_name}} ({% for field in table.fields -%}
+                    {{field.field_name}}{% if loop.last == false %},{% endif %}
+                {%- endfor %}) VALUES({% for field in table.fields -%}?{% if loop.last == false %},{% endif %}{%- endfor %})";
+            let data = sqlx::query(sql)
+            {%- for field in table.fields %}
+                .bind(&self.{{field.field_name}})
+            {%- endfor %}
+                .execute(&mut conn).await?.last_insert_id();
+            Ok(data)
+        }
+       
+        {% endfor %} 
+
+    {%- else -%}  
+   
+        /// 多个索引
+        /// table index_key  {{table.index_key}}   {{table.index_key | length}}
+        pub async fn select_by {%- for key in table.index_key -%}_{{key}}{%- endfor -%}(pool:&sqlx::MySqlPool,
+        {% for key in table.index_key -%} 
+                {{key}}:
+                    {%- for field in table.fields -%}
+                        {%- if field.field_name == key -%}
+                            {{field.field_type}},
+                        {%- endif -%}
+                    {%- endfor -%}
+        {%- endfor -%}) -> Result<Option<{{table.struct_name}}>,sqlx::Error> {
+            let mut conn = pool.acquire().await?;
+            let sql = "SELECT {% for v in table.fields %}{% if loop.index != 1 %},{% endif %}{{v.field_name}}{% endfor %} FROM {{table.table_name}}
+                 WHERE  {% for key in table.index_key -%}{{key}}=? {% if loop.last == false %} and {% endif %}  {% endfor -%}";                      
+            let data = sqlx::query_as::<_, {{table.struct_name}}>(&sql)
+                {% for key in table.index_key -%}                
+                .bind({{key}})             
+                {% endfor -%}
+                .fetch_optional(&mut conn).await?;
+            Ok(data)
+        }    
+       pub async fn update_by{%- for key in table.index_key -%}_{{key}}{%- endfor -%}(&self, pool:&sqlx::MySqlPool) -> Result<(),sqlx::Error> {
+            let mut conn = pool.acquire().await?;
+            let sql = "UPDATE {{table.table_name}} SET {% for field in table.fields -%}
+                    {%- if field.field_name not in table.index_key %}{{ field.field_name }} = ?{% if loop.last == false %},{% endif %}{% endif %}
+                {%- endfor %} WHERE article_id = ?";
+            sqlx::query(sql)
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key %}
+                .bind(&self.{{field.field_name}}){% endif %}{% endfor %}
+            {%- for key in table.index_key -%}           
+                .bind(&self.{{key}})
+            {%- endfor %}
+                .execute(&mut conn).await?;
+            Ok(())
+        }
+        
+        pub async fn insert(&self, pool:&sqlx::MySqlPool) -> Result<u64,sqlx::Error> {
+            let mut conn = pool.acquire().await?;
+            let sql = "INSERT INTO {{table.table_name}} ({% for field in table.fields -%}
+                    {{field.field_name}}{% if loop.last == false %},{% endif %}
+                {%- endfor %}) VALUES({% for field in table.fields -%}?{% if loop.last == false %},{% endif %}{%- endfor %})";
+            let data = sqlx::query(sql)
+            {%- for field in table.fields %}
+                .bind(&self.{{field.field_name}})
+            {%- endfor %}
+                .execute(&mut conn).await?.last_insert_id();
+            Ok(data)
+        }
+    {%- endif %}
+}
+  #}

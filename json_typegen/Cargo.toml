@@ -1,0 +1,18 @@
+[workspace]
+members = [
+    "json_typegen_shared",
+    "json_typegen_cli",
+    "json_typegen_wasm",
+    "json_typegen",
+    "json_typegen_demo"
+]
+default-members = ["json_typegen_cli"]
+
+# Compiler config for slightly smaller WASM bundle
+#[profile.release]
+#lto = true
+#opt-level = 3
+
+# Include debuginfo (e.g. for flamegraphs)
+#[profile.release]
+#debug = true

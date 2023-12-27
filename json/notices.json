@@ -1,0 +1,34 @@
+{
+    "total": 2,
+    "rows": [{
+            "searchValue": null,
+            "createBy": "admin",
+            "createTime": "2022-08-01 12:02:03",
+            "updateBy": "",
+            "updateTime": null,
+            "remark": "管理员",
+            "params": {},
+            "noticeId": 1,
+            "noticeTitle": "温馨提醒：2018-07-01 若依新版本发布啦",
+            "noticeType": "2",
+            "noticeContent": "新版本内容",
+            "status": "0"
+        },
+        {
+            "searchValue": null,
+            "createBy": "admin",
+            "createTime": "2022-08-01 12:02:03",
+            "updateBy": "",
+            "updateTime": null,
+            "remark": "管理员",
+            "params": {},
+            "noticeId": 2,
+            "noticeTitle": "维护通知：2018-07-01 若依系统凌晨维护",
+            "noticeType": "1",
+            "noticeContent": "维护内容",
+            "status": "0"
+        }
+    ],
+    "code": 200,
+    "msg": "查询成功"
+}

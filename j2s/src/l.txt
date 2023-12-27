@@ -1,0 +1,97 @@
+// fn parse_arr(arr: Vec<Value>) {
+//     let mut arr_vec: Vec<Vec<Value>> = Vec::new();
+//     let mut obj_vec: Vec<serde_json::Map<String, Value>> = Vec::new();
+//     let mut keys_vec: Vec<String> = Vec::new();
+//     for v in arr {
+//         // println!("{:#?}:{:#?}", key, v);
+//         // print!("{:#?}:", key);
+//         match v {
+//             Value::Null => println!("    {}", v),
+//             Value::Bool(_v) => println!("    {}", "bool"),
+//             Value::Number(_v) => println!("    {}", "num"),
+//             Value::String(_v) => println!("    {}", "String"),
+//             Value::Array(v) => {
+//                 arr_vec.push(v);
+//             }
+//             Value::Object(v) => {
+//                 obj_vec.push(v);
+//             }
+//         }
+//     }
+//     for v in &arr_vec {
+//         parse_arr(v.clone());
+//     }
+
+//     for v in &obj_vec {
+//         let _keys = parse_object(v.clone(), &mut keys_vec);
+//     }
+//     print!("NewObject:{:#?}:", &keys_vec);
+// }
+// fn parse_object(objs: serde_json::Map<String, Value>, keys_vec: &mut Vec<String>) {
+//     // let mut keys_vec:Vec<String> = Vec::new();
+//     let mut arr_vec: Vec<Vec<Value>> = Vec::new();
+//     let mut obj_vec: Vec<Map<String, Value>> = Vec::new();
+//     for (key, v) in objs {
+//         // println!("{:#?}:{:#?}", key, v);
+//         // print!("{:#?}:", key);
+//         if !keys_vec.contains(&key) {
+//             keys_vec.push(key.clone());
+//         }
+//         match v {
+//             Value::Null => println!("    {}", v),
+//             Value::Bool(_v) => println!("    {}", "bool"),
+//             Value::Number(_v) => println!("    {}", "num"),
+//             Value::String(_v) => println!("    {}", "String"),
+//             Value::Array(v) => {
+//                 arr_vec.push(v.clone());
+//             }
+//             Value::Object(v) => {
+//                 obj_vec.push(v.clone());
+//             }
+//         }
+//     }
+//     for v in &arr_vec {
+//         parse_arr(v.clone());
+//     }
+
+//     for v in &obj_vec {
+//         parse_object(v.clone(), keys_vec);
+//     }
+//     // keys_vec
+// }
+
+// fn is_json(entry: &DirEntry) -> bool {
+//     entry
+//         .file_name()
+//         .to_str()
+//         .map(|s| s.ends_with(".json"))
+//         .unwrap_or(true)
+// }
+
+// pub fn read_dir_files(current_dir: &str) -> Result<_,Error> {
+//     for entry in fs::read_dir(current_dir)? {
+//         let entry = entry?;
+//         let path = entry.path();
+//         println!(entry.name);
+//         // let metadata = fs::metadata(&path)?;
+//         // let last_modified = metadata.modified()?.elapsed()?.as_secs();
+
+//         // if last_modified < 24 * 3600 && metadata.is_file() {
+//         //     println!(
+//         //         "Last modified: {:?} seconds, is read only: {:?}, size: {:?} bytes, filename: {:?}",
+//         //         last_modified,
+//         //         metadata.permissions().readonly(),
+//         //         metadata.len(),
+//         //         path.file_name().ok_or("No filename")?
+//         //     );
+//         // }
+//     }
+
+//     Ok(())
+// }
+
+// let contents = read_to_string("./tests/fixtures/1/package.json").unwrap();
+// let package_json = PackageJson::try_from(contents).unwrap();
+
+// #[cfg(feature = "validate")]
+// package_json.validate().unwrap();

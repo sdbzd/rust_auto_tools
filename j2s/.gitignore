@@ -1,0 +1,8 @@
+*.lock
+/target
+/migrations
+/debug/*
+*.exe
+*.d
+/json_test
+debug

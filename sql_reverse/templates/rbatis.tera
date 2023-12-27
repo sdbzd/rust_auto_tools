@@ -1,0 +1,227 @@
+use std::fmt::{Debug};
+use serde_derive::{Deserialize, Serialize};
+use rbatis::crud_table;
+use rbatis::rbatis::{Rbatis};
+use rbatis::error::Error;
+use rbatis::Page;
+use rbatis::PageRequest;
+use rbson::Bson;
+use rbatis::crud::{CRUD, Skip};
+use crate::utils::bool_from_str;
+use chrono::{NaiveDate,NaiveDateTime };
+use chrono::prelude::*;
+use sqlx::types::chrono::{ DateTime,Utc };
+use sqlx::types::Decimal;
+
+
+{% if table.comment -%}
+	/// {{ table.comment }} {{ table.table_name }}
+{% endif -%}
+{% for index in table.index_key -%}
+    /// 索引：{{index}}
+{% endfor -%}
+
+
+
+#[crud_table(table_name:"{{ table.table_name }}"|table_columns:"{%- for v in table.fields %}{{ v.field_name }},{%- endfor %}")]
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
+pub struct {{ table.struct_name }} {
+{%- for v in table.fields %}
+	{% if v.comment -%}
+	    /// {{ v.comment }} {% if v.database_field_type %} field_type: {{ v.database_field_type }}{% endif %}{% if v.default %} default: {{ v.default }}{% endif %} {% if v.default == '' %} default: ''{% endif %}
+	{% endif -%}
+	{% if v.is_null == 1 -%}
+    	pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+    {%- else -%}
+        {% if v.field_type == ' NaiveDateTime ' -%}
+            pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+        {%- else -%}
+            pub {{ v.field_name }}: {{ v.field_type }},
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor %}
+}
+
+ {# ///   #[serde(default)]
+///    #[serde(deserialize_with="bool_from_str")] #}
+
+impl {{table.struct_name}} {
+    #[allow(dead_code)]
+    pub async fn from_id(rb: &Rbatis,  {%- for key in table.index_key %}{{key}}: &i64{% if loop.last == false %},{% endif %}{%- endfor %}) -> Result<Option<Self>, Error> {
+        let wp = rb.new_wrapper() //.eq("job_id", job_id);
+         {%- for key in table.index_key %}
+               .eq("{{key}}", {{key}})     
+            {%- endfor %};   
+        rb.fetch_by_wrapper::<Option<Self>>(wp).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn save(&mut self,rb: &Rbatis) -> Result<u64, Error> {
+        match rb.save(self, &[Skip::Column("job_id"),Skip::Column("create_time"),Skip::Column("update_time"),Skip::Column("job_id")]).await {
+            Ok(ds) => {
+               // self.job_id = ds.last_insert_id;
+                Ok(ds.rows_affected)
+            }
+            Err(err) => {
+                Err(err)
+            }
+        }
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn update(&self,rb: &Rbatis) -> Result<u64, Error> {
+        let wp = rb.new_wrapper()
+             {%- for key in table.index_key %}
+               .eq("{{key}}", self.{{key}})     
+            {%- endfor %};   
+        rb.update_by_wrapper(self, wp, &[Skip::Column("job_id"),Skip::Column("create_time"),Skip::Column("update_time"),Skip::Column("job_id")]).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn update_selective(&self,rb: &Rbatis) -> Result<u64, Error> {
+        let wp = rb.new_wrapper()
+            {%- for key in table.index_key %}
+               .eq("{{key}}", self.{{key}})     
+            {%- endfor %};   
+        rb.update_by_wrapper(self, wp, &[Skip::Value(Bson::Null)]).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn remove_batch(&self,rb: &Rbatis) -> Result<u64, Error> {
+        let wp = rb.new_wrapper()
+            {%- for key in table.index_key %}
+               .eq("{{key}}", self.{{key}})     
+            {%- endfor %};   
+        rb.remove_by_wrapper::<Self>(wp).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn remove(&mut self,rb: &Rbatis) -> Result<u64, Error> {
+        let wp = rb.new_wrapper()
+            {%- for key in table.index_key %}
+               .eq("{{key}}", self.{{key}})     
+            {%- endfor %};            
+        rb.remove_by_wrapper::<Self>(wp).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn remove_ids(rb: &Rbatis,ids: &[i64]) -> Result<u64, Error> {
+        let wp = rb.new_wrapper()
+            .r#in("job_id", ids);
+        rb.remove_by_wrapper::<Self>(wp).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn query_paged(&self,rb: &Rbatis,curr: u64,ps: u64) -> Result<Page<Self>, Error> {
+        let wp = rb.new_wrapper()
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key -%}
+                .r#if(self.{{field.field_name}}.clone(), |w| w.and().eq("{{field.field_name}}", self.{{field.field_name}}.clone().unwrap())){% endif %}              
+            {% endfor %};  
+        rb.fetch_page_by_wrapper::<Self>(wp, &PageRequest::new(curr, ps)).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn query_list(&self,rb: &Rbatis) -> Result<Vec<Self>, Error> {
+        let wp = rb.new_wrapper()
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key -%}
+                  .r#if(self.{{field.field_name}}.clone(), |w| w.and().eq("{{field.field_name}}", self.{{field.field_name}}.clone())){% endif %}      
+             
+            {% endfor %};  
+        rb.fetch_list_by_wrapper::<Self>(wp).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn query_all(rb: &Rbatis) -> Result<Vec<Self>, Error> {
+        let wp = rb.new_wrapper();
+        rb.fetch_list_by_wrapper::<Self>(wp).await
+    }
+
+
+}
+
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
+pub struct {{table.struct_name}}InfoQuery {
+    {%- for v in table.fields %}
+	{% if v.comment -%}
+	    /// {{ v.comment }} {% if v.database_field_type %} field_type: {{ v.database_field_type }}{% endif %}{% if v.default %} default: {{ v.default }}{% endif %} {% if v.default == '' %} default: ''{% endif %}
+	{% endif -%}
+	{% if v.is_null == 1 -%}
+    	pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+    {%- else -%}
+        {% if v.field_type == ' NaiveDateTime ' -%}
+            pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+        {%- else -%}
+            pub {{ v.field_name }}: {{ v.field_type }},
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor %}
+}
+/*
+    #[serde(default)]
+    pub job_ids: Vec<i64>,
+    pub job_id: Option<i64>,
+    pub name: Option<String>,
+    #[serde(default)]
+    #[serde(deserialize_with="bool_from_str")]
+    pub enabled: Option<bool>,
+    pub job_sort: Option<i32>,
+    pub create_by: Option<String>,
+    pub update_by: Option<String>,
+    #[serde(default)]
+    pub create_time: Vec<rbatis::DateTimeNative>,
+    #[serde(default)]
+    pub update_time: Vec<rbatis::DateTimeNative>,
+*/
+/*
+let sql = "UPDATE {{table.table_name}} SET {% for field in table.fields -%}
+                    {%- if field.field_name not in table.index_key %}{{ field.field_name }} = ?{% if loop.last == false %},{% endif %}{% endif %}
+                {%- endfor %} WHERE article_id = ?";
+            sqlx::query(sql)
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key %}
+                .bind(&self.{{field.field_name}}){% endif %}{% endfor %}
+            {%- for key in table.index_key -%}           
+                .bind(&self.{{key}})
+            {%- endfor %}
+*/
+
+impl {{table.struct_name}}InfoQuery {
+    #[allow(dead_code)]
+    pub async fn query_paged(&self,rb: &Rbatis,curr: u64,ps: u64) -> Result<Page<{{ table.struct_name}}>, Error> {
+        let wp = rb.new_wrapper()
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key -%}
+                .r#if(self.{{field.field_name}}.clone(), |w| w.and().eq("{{field.field_name}}", self.{{field.field_name}}.clone().unwrap())){% endif %}              
+            {% endfor %};                
+        rb.fetch_page_by_wrapper::<{{ table.struct_name}}>(wp, &PageRequest::new(curr, ps)).await
+    }
+
+
+    #[allow(dead_code)]
+    pub async fn query_list(&self,rb: &Rbatis) -> Result<Vec<{{ table.struct_name}}>, Error> {
+        let wp = rb.new_wrapper()
+            {%- for field in table.fields %}
+                {%- if field.field_name not in table.index_key -%}
+                .r#if(self.{{field.field_name}}.clone(), |w| w.and().eq("{{field.field_name}}", self.{{field.field_name}}.clone().unwrap())){% endif %}              
+            {% endfor %};  
+        rb.fetch_list_by_wrapper::<{{ table.struct_name}}>(wp).await
+    }
+
+
+}
+
+
+
+
+
