@@ -164,35 +164,34 @@ fn test() {
             let _btm_strut: BTreeMap<String, String> = BTreeMap::new();
             //  let file_content = read_file(file_name.clone()).unwrap();
 
-             // File hosts.txt must exist in the current path
-            // if let Ok(lines) = read_lines_wrap(file_name.clone()) {
-            //     // Consumes the iterator, returns an (Optional) String
-            //     for line in lines {
-            //         if let Ok(ip) = line {                        
-            //             // let _line =ip;
-            //             if !ip.trim().is_empty() {
-            //                // println!("new line::{},len{}\r\n", ip.trim(),ip.trim().len());
-            //                 println!("#start:{}#end", ip);
-            //                 json_to_file(ip);
-            //             }
-            //         }
-                   
-            //     }
-            // }
-            let lines  = read_lines(&file_name);
-            {
+            if let Ok(lines) = read_lines_wrap(file_name.clone()) {
                 // Consumes the iterator, returns an (Optional) String
                 for line in lines {
-                    let ip = line;
-                    {
+                    if let Ok(ip) = line {                        
+                        // let _line =ip;
                         if !ip.trim().is_empty() {
                            // println!("new line::{},len{}\r\n", ip.trim(),ip.trim().len());
                             println!("#start:{}#end", ip);
                             json_to_file(ip);
                         }
                     }
+                   
                 }
             }
+            // let lines  = read_lines(&file_name);
+            // {
+            //     // Consumes the iterator, returns an (Optional) String
+            //     for line in lines {
+            //         let ip = line;
+            //         {
+            //             if !ip.trim().is_empty() {
+            //                // println!("new line::{},len{}\r\n", ip.trim(),ip.trim().len());
+            //                 println!("#start:{}#end", ip);
+            //                 json_to_file(ip);
+            //             }
+            //         }
+            //     }
+            // }
 
 
             // let file = File::open(file_name).unwrap();
