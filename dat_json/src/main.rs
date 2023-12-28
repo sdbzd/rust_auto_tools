@@ -124,40 +124,35 @@ fn json_to_file(line: &str) {
         // println!("#start:{}\r\n\r\n#end", ip);
         let output_file_name = env::current_dir()
             .unwrap()
-            .join("output")
-            .join(format!("{}.json", name)); //[name.clone(),".json".to_string()].join());
+            .join("output")  ; //[name.clone(),".json".to_string()].join());
 
         // write_to_file(output_file_name, &response_data.get("data").unwrap().to_string());
-        let json_file = output_file_name
-            .clone()
-            .into_os_string()
-            .into_string()
-            .unwrap();
-        write_to_file(
-            output_file_name.clone(),
+        // let json_file = output_file_name
+        //     .clone()
+        //     .into_os_string()
+        //     .into_string()
+        //     .unwrap();
+        let _ = write_to_file(
+            output_file_name.join(format!("{name}.json")),
             &serde_json::to_string_pretty(&response_data.get("data")).unwrap(),
         );
 
         let code = {
-            //  let name = matches.value_of("name").unwrap_or("Root");
-            // let mut options = match matches.value_of("options") {
-            //     Some(block) => parse::options(block)?,
-            //     None => Options::default(),
-            // };
-            // if let Some(output_mode) = matches.value_of("output-mode") {
-            //     options.output_mode = OutputMode::parse(output_mode).ok_or("Invalid output mode")?;
-            // }
-
+            //  let name = matches.value_of("name").unwrap_or("Root");  
+            let mut _options = Options::default();
+            _options.use_default_for_missing_fields= true; 
+            // _options.
+            // options.import_style = ImportStyle::AssumeExisting;
             codegen(
                 name,
                 &serde_json::to_string_pretty(&response_data.get("data")).unwrap(),
-                Options::default(),
+                _options,
             )
         };
         match code {
             Ok(v)=>{
                 write_to_file(
-                            format!("{}.rs", output_file_name.to_string_lossy()),
+                            format!("{}.rs", output_file_name.join(name).to_string_lossy()),
                             &v,
                         );
 

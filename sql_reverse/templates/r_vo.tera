@@ -1,0 +1,25 @@
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct {{ table.struct_name }}VO {
+{%- for v in table.fields %}
+	{% if v.is_null == 1 -%}
+    	pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+    {%- else -%}
+        {% if v.field_type == ' NaiveDateTime ' -%}
+            pub {{ v.field_name }}: Option<{{ DateTime }}>,
+        {%- else -%}
+            pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+        {%- endif -%}
+    {%- endif %}
+{%- endfor %}
+}
+impl From<{{ table.struct_name }}> for {{ table.struct_name }}VO {
+    fn from(arg: {{ table.struct_name }}) -> Self {
+        Self {
+            {%- for v in table.fields %}
+            {{ v.field_name }}: arg.{{ v.field_name }},
+            {%- endfor %}
+        }
+    }
+}
+
+

@@ -243,9 +243,9 @@ fn generate_struct_type(
                 &field_name != name
             };
             let mut field_code = String::new();
-            if needs_rename {
-                field_code += &format!("    #[serde(rename = \"{}\")]\n", name)
-            }
+            // if needs_rename {
+            //     field_code += &format!("    #[serde(rename = \"{}\")]\n", name)
+            // }
 
             let (is_collapsed, collapsed) = collapse_option_vec(ctxt, typ);
             if is_collapsed {
@@ -264,7 +264,7 @@ fn generate_struct_type(
                 field_code += " ";
             }
 
-            format!("{}{}: {},", field_code, field_name, field_type)
+            format!("{}{}: Option<{}>,", field_code, field_name, field_type)
         })
         .collect();
 

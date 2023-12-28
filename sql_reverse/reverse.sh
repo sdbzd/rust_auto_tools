@@ -15,3 +15,8 @@ sql_reverse.exe  mysql -f reverse_mysql.yml -s rs -n r.tera -m 1
 use rbatis::rbdc::datetime::DateTime;
 use serde_json::json;
 use serde::{Serialize,Deserialize}
+
+
+target\debug\sql_reverse.exe  mysql -c mysql_default.json -f reverse_mysql.yml -s rs -n r_vo.tera -m 1
+
+target\release\sql_reverse.exe  mysql -c mysql_default.json -f reverse_mysql.yml -s rs -n r_vo.tera -m 1
