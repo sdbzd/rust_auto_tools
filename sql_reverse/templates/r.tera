@@ -1,5 +1,4 @@
 #[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct {{ table.struct_name }} {
 {%- for v in table.fields %}
 	{% if v.comment -%}
@@ -9,9 +8,9 @@ pub struct {{ table.struct_name }} {
     	pub {{ v.field_name }}: Option<{{ v.field_type }}>,
     {%- else -%}
         {% if v.field_type == ' NaiveDateTime ' -%}
-            pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+            pub {{ v.field_name }}: Option<{{ DateTime }}>,
         {%- else -%}
-            pub {{ v.field_name }}: {{ v.field_type }},
+            pub {{ v.field_name }}: Option<{{ v.field_type }}>,
         {%- endif -%}
     {%- endif %}
 {%- endfor %}

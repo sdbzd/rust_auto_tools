@@ -30,8 +30,10 @@
     "^tinyint$": "u8",
     "^tinyint\\(\\d+\\) unsigned$": "u8",
     "^tinyint\\(\\d+\\)$": "u8",
-    "blob": "Vec<u8>",
+    "blob": "String",
+    "^varchar\\(1\\)$": "char",
     "varchar": "String",
+    "^char\\(1\\)$": "char",
     "char": "String",
     "text": "String",
     "year": "Year"
