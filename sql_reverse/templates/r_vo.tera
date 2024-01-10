@@ -5,7 +5,7 @@ pub struct {{ table.struct_name }}VO {
         {% if v.field_name=="type" -%}
     	pub r#{{ v.field_name }}: Option<{{ v.field_type }}>,
         {%- else -%}
-        pub r#{{ v.field_name }}: Option<{{ v.field_type }}>,
+        pub {{ v.field_name }}: Option<{{ v.field_type }}>,
          {%- endif %}
     {%- else -%}
         {% if v.field_type == ' NaiveDateTime ' -%}
@@ -21,9 +21,9 @@ impl From<{{ table.struct_name }}> for {{ table.struct_name }}VO {
         Self {
             {%- for v in table.fields %}
             {% if v.field_name=="type" -%}
-            {{ v.field_name }}: arg.{{ v.field_name }},
+            r#{{ v.field_name }}: arg.r#{{ v.field_name }},
             {%- else -%}
-            {{ v.field_name }}: arg.r#{{ v.field_name }},
+            {{ v.field_name }}: arg.{{ v.field_name }},
             {%- endif %}
             {%- endfor %}
         }
