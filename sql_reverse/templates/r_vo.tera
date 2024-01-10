@@ -2,7 +2,11 @@
 pub struct {{ table.struct_name }}VO {
 {%- for v in table.fields %}
 	{% if v.is_null == 1 -%}
-    	pub {{ v.field_name }}: Option<{{ v.field_type }}>,
+        {% if v.field_name=="type" -%}
+    	pub r#{{ v.field_name }}: Option<{{ v.field_type }}>,
+        {%- else -%}
+        pub r#{{ v.field_name }}: Option<{{ v.field_type }}>,
+         {%- endif %}
     {%- else -%}
         {% if v.field_type == ' NaiveDateTime ' -%}
             pub {{ v.field_name }}: Option<{{ DateTime }}>,
